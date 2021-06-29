@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="goToInterface"
+            type="com.app.moviekuapp.data.model.GoToMovie" />
+
+        <variable
+            name="movie"
+            type="com.app.moviekuapp.data.model.entity.Movie" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:clickable="true"
+        android:onClick="@{() -> goToInterface.goTo(movie)}">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="108dp"
+            android:layout_height="150dp"
+            android:contentDescription="@string/movie_image"
+            app:bind_poster_path="@{movie.posterPath}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars[0]" />
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha=".8"
+            android:ellipsize="end"
+            android:paddingTop="5dp"
+            android:text="@{movie.title}"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="@id/image"
+            app:layout_constraintRight_toRightOf="@id/image"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            tools:text="Title" />
+        <TextView
+            android:id="@+id/subtittletext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+             android:ellipsize="end"
+            android:lines="2"
+            android:text="@{movie.overview}"
+            android:textSize="10sp"
+            app:layout_constraintLeft_toLeftOf="@id/titleText"
+            app:layout_constraintRight_toRightOf="@id/titleText"
+            app:layout_constraintTop_toBottomOf="@id/titleText"
+            tools:text="Title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
